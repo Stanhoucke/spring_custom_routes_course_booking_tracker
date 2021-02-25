@@ -20,17 +20,17 @@ public class Course {
     @Column(name = "town")
     private String town;
 
-    @Column(name = "stars_out_of_five")
-    private int starsOutOfFive;
+    @Column(name = "rating")
+    private int rating;
 
     @OneToMany(mappedBy = "course")
     @JsonIgnoreProperties({"course"})
     private List<Booking> bookings;
 
-    public Course(String name, String town, int starsOutOfFive) {
+    public Course(String name, String town, int rating) {
         this.name = name;
         this.town = town;
-        this.starsOutOfFive = starsOutOfFive;
+        this.rating = rating;
         this.bookings = new ArrayList<Booking>();
     }
 
@@ -62,11 +62,11 @@ public class Course {
     }
 
     public int getStarsOutOfFive() {
-        return starsOutOfFive;
+        return rating;
     }
 
-    public void setStarsOutOfFive(int starsOutOfFive) {
-        this.starsOutOfFive = starsOutOfFive;
+    public void setStarsOutOfFive(int rating) {
+        this.rating = rating;
     }
 
     public List<Booking> getBookings() {

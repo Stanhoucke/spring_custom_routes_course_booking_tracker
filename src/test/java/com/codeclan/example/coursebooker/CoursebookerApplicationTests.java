@@ -1,5 +1,6 @@
 package com.codeclan.example.coursebooker;
 
+import com.codeclan.example.coursebooker.models.Course;
 import com.codeclan.example.coursebooker.repositories.BookingRepository;
 import com.codeclan.example.coursebooker.repositories.CourseRepository;
 import com.codeclan.example.coursebooker.repositories.CustomerRepository;
@@ -8,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -31,6 +34,12 @@ class CoursebookerApplicationTests {
 	@Test
 	public void canGetBob(){
 		assertEquals("Bob", customerRepository.getOne(1L).getName());
+	}
+
+	@Test
+	public void canFindCoursesByRating(){
+		List<Course> foundCourses = courseRepository.findByRating(4);
+		assertEquals(1, foundCourses.size());
 	}
 
 }
