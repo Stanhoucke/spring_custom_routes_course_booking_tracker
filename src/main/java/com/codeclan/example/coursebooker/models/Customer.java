@@ -22,8 +22,8 @@ public class Customer {
     @Column(name = "age")
     private int age;
 
-    @OneToMany(mappedBy = "booking")
-    @JsonIgnoreProperties({"booking"})
+    @OneToMany(mappedBy = "customer")
+    @JsonIgnoreProperties({"customer"})
     private List<Booking> bookings;
 
     public Customer(String name, String town, int age) {

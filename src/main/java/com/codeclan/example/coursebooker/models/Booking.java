@@ -16,7 +16,7 @@ public class Booking {
     private String date;
 
    @ManyToOne
-   @JsonIgnoreProperties({"customers"})
+   @JsonIgnoreProperties({"bookings"})
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
