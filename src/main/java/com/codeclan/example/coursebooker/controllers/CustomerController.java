@@ -21,10 +21,13 @@ public class CustomerController {
 
     @GetMapping(value = "/customers")
     public ResponseEntity<List<Customer>> getAllCustomers(
-            @RequestParam(name = "course_id", required = false) Long id)
+            @RequestParam(name = "course_id", required = false) Long id,
+            @RequestParam(name = "town", required = false) String town)
 
     { if (id != null) {
         return  new ResponseEntity<>(customerRepository.findCustomerByBookingsCourseId(id), HttpStatus.OK);
+    } else if (town != null) {
+        return new ResponseEntity<>(customerRepository.findCustomerByTownIgnoreCase(town), HttpStatus.OK);
     }
         return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
     }
